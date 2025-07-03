@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 1331</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://d1ch.cc/edge/dat/1695349621.dat",
+            "https://d1ch.cc/edge/dat/1695349617.dat",
+            "https://d1ch.cc/edge/dat/1695349610.dat",
+            "https://d1ch.cc/edge/dat/1695349481.dat",
+            "https://d1ch.cc/edge/dat/1695349471.dat",
+            "https://d1ch.cc/edge/dat/1695349325.dat",
+            "https://d1ch.cc/edge/dat/1695349169.dat",
+            "https://d1ch.cc/edge/dat/1695349165.dat",
+            "https://d1ch.cc/edge/dat/1695349100.dat",
+            "https://d1ch.cc/edge/dat/1695348996.dat"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>
