@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 4215</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://eddiarchive3rd.boy.jp/?page=42141&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42142&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42143&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42144&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42145&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42146&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42147&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42148&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42149&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date=",
+            "https://eddiarchive3rd.boy.jp/?page=42150&keyword=&onor=&NoR=&fuzzy=&sort=old&start_date=&end_date="
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>
