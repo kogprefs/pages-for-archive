@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 63</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://bbs.punipuni.eu/vaporeon/dat/1691506215.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691505072.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691670474.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691663627.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691659474.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691661687.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691756218.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691726108.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691726735.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691870346.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691930195.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691904159.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1691943943.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1692019820.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1692181379.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1692362675.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1692483249.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1692460941.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1692537947.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1692537041.dat"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>

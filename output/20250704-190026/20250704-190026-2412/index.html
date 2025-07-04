@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 2412</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://bbs.punipuni.eu/vaporeon/dat/1746791521.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746799369.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746803615.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746719714.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746755534.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746805473.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746811161.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746806768.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746709409.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746676817.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746801489.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746829861.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746805845.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746833284.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746843268.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746717692.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746694615.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746839216.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746842973.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1746741331.dat"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>
