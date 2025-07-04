@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 3515</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://bbs.punipuni.eu/vaporeon/dat/1737974367.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737961320.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737976582.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737986051.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737968288.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737975630.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737940034.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737981059.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737994454.dat",
+            "https://bbs.punipuni.eu/vaporeon/dat/1737974504.dat"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>
