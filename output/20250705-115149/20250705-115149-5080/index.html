@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 5080</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721043471.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721043697.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721043719.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721043982.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044120.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044141.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044168.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044197.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044382.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044398.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044444.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044501.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044533.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044571.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044595.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044739.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044796.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044893.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044916.dat",
+            "https://tulipplantation.com/tulipplantation/thread/1721/1721044950.dat"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>
