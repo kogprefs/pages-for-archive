@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 141</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://tulipplantation.com/lab/thread/1734/1734919195.dat",
+            "https://tulipplantation.com/lab/thread/1734/1734919304.dat",
+            "https://tulipplantation.com/lab/thread/1734/1734940945.dat",
+            "https://tulipplantation.com/lab/thread/1733/1733039308.dat",
+            "https://tulipplantation.com/lab/thread/1733/1733052705.dat",
+            "https://tulipplantation.com/lab/thread/1733/1733052762.dat",
+            "https://tulipplantation.com/lab/thread/1733/1733052864.dat",
+            "https://tulipplantation.com/lab/thread/1733/1733068327.dat",
+            "https://tulipplantation.com/lab/thread/1733/1733177202.dat",
+            "https://tulipplantation.com/lab/thread/1733/1733218908.dat"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>

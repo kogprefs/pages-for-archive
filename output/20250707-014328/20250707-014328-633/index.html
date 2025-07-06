@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Launcher 633</title>
+</head>
+<body>
+    <p>This page is for Internet Archive.</p>
+    <script>
+        const urlsToArchive = [
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740576397.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740576660.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740576736.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740577034.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740579624.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740627080.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740632763.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740701608.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740731612.dat",
+            "https://tulipplantation.com/3a0hgjmtbleiga8n/thread/1740/1740731654.dat"
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('run') === 'true') {
+            document.body.innerHTML = '';
+            urlsToArchive.forEach(url => {
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => console.log(`Requested: ${url}`))
+                    .catch(err => console.error(`Failed: ${url}`, err));
+            });
+        } else {
+            document.body.innerHTML += '<p style="color: green;">Safe mode. No requests were sent.</p>';
+        }
+    </script>
+</body>
+</html>
